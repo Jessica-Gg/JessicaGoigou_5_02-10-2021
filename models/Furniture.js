@@ -10,7 +10,8 @@ const furnitures = [
     "name": "Cross Table",
     "price": 59900,
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "imageUrl": "oak_1.jpg"
+    "imageUrl": "oak_1.jpg",
+    "quantity": 0
   },
   {
     "varnish": [
@@ -21,7 +22,8 @@ const furnitures = [
     "name": "Coffee Table",
     "price": 89900,
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "imageUrl": "oak_2.jpg"
+    "imageUrl": "oak_2.jpg",
+    "quantity": 0
   },
   {
     "varnish": [

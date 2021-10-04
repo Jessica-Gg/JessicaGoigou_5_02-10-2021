@@ -62,7 +62,7 @@ exports.orderFurniture = (req, res, next) => {
       Furniture.findById(productId).then(
         (furniture) => {
           if (!furniture) {
-            reject('Camera not found: ' + productId);
+            reject('Furniture not found: ' + productId);
           }
           furniture.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + furniture.imageUrl;
           resolve(furniture);
