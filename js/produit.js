@@ -47,7 +47,7 @@ fetch('http://localhost:3000/api/furniture/' + id)
 
         //Ecoute au clic pour ajout du meuble au panier    
         document.getElementById("addcart").addEventListener("click", function (e) {
-            e.preventDefault()
+            e.preventDefault();
             //Récupération du panier local ou initialisation si inexistant
             var inCart = JSON.parse(localStorage.getItem("inCart")) ?? {};
             //Ajout du meuble et de ses informations au panier local
