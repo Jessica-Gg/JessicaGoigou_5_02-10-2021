@@ -75,11 +75,14 @@
             <!--Boutons pour soit revenir à la page d'accueil, soit valider le panier et accéder au formulaire-->
         <div class="text-center mb-3">
             <h5 id="totalCost" class="border-top border-bottom totalCost bold"></h5>  
-            <a class="btn btn-dark mt-3 mx-5" href="../index.html">Poursuivre mes achats</a><a id="btnForm" class="btn btn-dark mt-3 mx-5" href="#formulaire">Valider ma commande</a>
+            <a class="btn btn-dark mt-3 mx-5" href="../index.html"><i class="far fa-arrow-alt-circle-left"></i> Poursuivre mes achats</a>
+            <button id="deleteCart" class="btn btn-dark mt-3 mx-5">Vider mon panier <i class="far fa-trash-alt"></i></button>
+            <a id="btnForm" class="btn btn-dark mt-3 mx-5" href="#formulaire">Valider ma commande <i class="far fa-check-circle"></i></a>
         </div>
             
     <div id="containerFormulaire" class="text-center">
-        <!--Insertion du formulaire de commande-->
+        <!--Insertion du formulaire de commande si le bouton "valider la commande" est cliqué -->
+        
     </div>
 </section>
 
@@ -111,7 +114,7 @@
 
 
     <!-- JavaScript -->
-    <script src="../js/furnitures.js"></script>
+    <script src="../js/items.js"></script>
     <script src='../js/panier.js'></script>
     <!-- jQuery, Popper.js, Bootstrap JS -->
 

@@ -17,13 +17,15 @@ fetch("http://localhost:3000/api/furniture")
                     <div class="card-header bg-white">
                         <h2 class="card-title text-center">${item.name}</h2>
                     </div>
-                    <img src="${item.imageUrl}" class="card-img-top">
+                    <a href="./pages_html/produit.html?id=${item.id}">
+                        <img src="${item.imageUrl}" class="card-img-top">
+                    </a>
                     <div class="card-body">
                         <p class="card-text bold">prix : ${item.priceTxt}</p>
                         <p class="card-text">Description : ${item.description}</p>
                     </div>
                     <div class="card-footer">
-                        <div class="text-center"><a id="seeProduct" class="btn" href="./pages_html/produit.html?id=${item.id}">Voir la fiche complète</a></div>
+                        <div class="text-center"><a id="seeProduct" class="btn" href="./pages_html/produit.html?id=${item.id}" aria-label="Lien vers la fiche produit détaillée">Voir la fiche complète</a></div>
                     </div>
                 </div>
             </div>` 

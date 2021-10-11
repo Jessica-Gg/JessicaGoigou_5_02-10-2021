@@ -59,7 +59,6 @@ fetch('http://localhost:3000/api/furniture/' + id)
             }
             inCart[item.name].quantity += 1;
 
-
             //Ajout local storage - Sauvegarde des éléments ajouté au panier
             localStorage.setItem("inCart", JSON.stringify(inCart));
 

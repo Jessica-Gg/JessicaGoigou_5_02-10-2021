@@ -1,6 +1,14 @@
+  /*----------------------------------------------------*/
+ /*---------- VARIABLES ET IMPORT LIBRAIRIES ----------*/
+/*----------------------------------------------------*/
 @import "variable_overrides";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
+$background-color : rgb(220, 241, 245);
+
+  /* ---------------------------------------------------------------- */
+ /* -----------------------MODIFS APPARENCE------------------------- */
+/* ---------------------------------------------------------------- */
 body {
     margin: 0;
     padding: 0;
@@ -18,11 +26,21 @@ body {
     align-items: center;
 }
 
-.cardIndex:hover{
+/*.cardIndex:hover{
     transform: scale(1.1);
     transition: transform 1s;
-}
+}*/
 
 .card-footer:hover{
-    background-color: rgb(220, 241, 245);
+    background-color: $background-color;
+}
+
+.form-control{
+    background-color: $background-color;
+       /*-- &:invalid{
+            border-color: $danger;
+        }
+        &:valid{
+            border-color: $success;  
+        }--*/
 }

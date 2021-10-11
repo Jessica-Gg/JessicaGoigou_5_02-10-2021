@@ -1,4 +1,7 @@
 @charset "UTF-8";
+/*----------------------------------------------------*/
+/*---------- VARIABLES ET IMPORT LIBRAIRIES ----------*/
+/*----------------------------------------------------*/
 /*!
  * Bootstrap v5.1.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -10829,6 +10832,9 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+/* ---------------------------------------------------------------- */
+/* -----------------------MODIFS APPARENCE------------------------- */
+/* ---------------------------------------------------------------- */
 body {
   margin: 0;
   padding: 0;
@@ -10846,13 +10852,22 @@ body {
   align-items: center;
 }
 
-.cardIndex:hover {
-  transform: scale(1.1);
-  transition: transform 1s;
-}
-
+/*.cardIndex:hover{
+    transform: scale(1.1);
+    transition: transform 1s;
+}*/
 .card-footer:hover {
   background-color: #dcf1f5;
+}
+
+.form-control {
+  background-color: #dcf1f5;
+  /*-- &:invalid{
+       border-color: $danger;
+   }
+   &:valid{
+       border-color: $success;  
+   }--*/
 }
 
 /*# sourceMappingURL=style.css.map */
