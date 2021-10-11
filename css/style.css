@@ -10862,12 +10862,6 @@ body {
 
 .form-control {
   background-color: #dcf1f5;
-  /*-- &:invalid{
-       border-color: $danger;
-   }
-   &:valid{
-       border-color: $success;  
-   }--*/
 }
 
 /*# sourceMappingURL=style.css.map */

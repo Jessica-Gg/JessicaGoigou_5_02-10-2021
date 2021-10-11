@@ -3,7 +3,7 @@ let paramsId = (new URL(document.location)).searchParams;
 let id = paramsId.get("id");
 
 //Afficahge du nombre de produits dans le panier
-let nbPrdt = localStorage.getItem("compteurProduct");
+let nbPrdt = sessionStorage.getItem("compteurProduct");
 document.querySelector(".cart span").textContent = nbPrdt;
 
 // REQUETE API + id produit pour afficher uniquement celui qui a été sélectionné
@@ -49,7 +49,7 @@ fetch('http://localhost:3000/api/furniture/' + id)
         document.getElementById("addcart").addEventListener("click", function (e) {
             e.preventDefault();
             //Récupération du panier local ou initialisation si inexistant
-            var inCart = JSON.parse(localStorage.getItem("inCart")) ?? {};
+            var inCart = JSON.parse(sessionStorage.getItem("inCart")) ?? {};
             //Ajout du meuble et de ses informations au panier local
             if (!inCart[item.name]) {
                 inCart = {
@@ -60,12 +60,12 @@ fetch('http://localhost:3000/api/furniture/' + id)
             inCart[item.name].quantity += 1;
 
             //Ajout local storage - Sauvegarde des éléments ajouté au panier
-            localStorage.setItem("inCart", JSON.stringify(inCart));
+            sessionStorage.setItem("inCart", JSON.stringify(inCart));
 
             //Compteur du nombre de produits dans le panier
-            var nbProduct = localStorage.getItem('compteurProduct');
+            var nbProduct = sessionStorage.getItem('compteurProduct');
             nbProduct++;
-            localStorage.setItem("compteurProduct", nbProduct);
+            sessionStorage.setItem("compteurProduct", nbProduct);
             document.querySelector(".cart span").textContent = nbProduct;
         })
     })

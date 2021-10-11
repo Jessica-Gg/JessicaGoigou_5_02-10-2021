@@ -1,4 +1,4 @@
-let nbPrdt = localStorage.getItem("compteurProduct");
+let nbPrdt = sessionStorage.getItem("compteurProduct");
 document.querySelector(".cart span").textContent = nbPrdt;
 
 // Requête API
