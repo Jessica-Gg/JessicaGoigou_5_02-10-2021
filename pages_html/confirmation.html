@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html lang="fr">
   <head>
@@ -50,7 +50,7 @@
                              <a class="nav-link text-dark" href="../index.html">Accueil</a>
                           </li>
                           <li class="nav-item">
-                             <a class="nav-link text-dark" href="#produits">Produits</a>
+                             <a class="nav-link text-dark" href="../index.html">Produits</a>
                           </li>
                           <li class="nav-item">
                             <a class="nav-link text-dark"  href="mailto:orinoco@gmail.com">Contact</a>
@@ -72,9 +72,10 @@
             <p>Merci pour votre commande. Elle a bien été validée par notre serveur et sera traitée dans les plus brefs délais</p>
         </div>
         <div class="row">
-            <p>Le prix total de votre commande est :</p>
-            <p>Votre identifiant de commande à garder : </p>
+            <p id="totalCommande"></p>
+            <p id="identifiantClient"></p>
         </div>
+        <button class="btn btn-dark" id="resetStorage">Terminer</button>
     </div>
 
  
@@ -102,7 +103,7 @@
     </footer>
 
     <!-- JavaScript -->
-    
+    <script src="../js/confirmation.js"></script>
     <!-- jQuery, Popper.js, Bootstrap JS -->
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

@@ -49,7 +49,8 @@ fetch('http://localhost:3000/api/furniture/' + id)
         document.getElementById("addcart").addEventListener("click", function (e) {
             e.preventDefault();
             //Récupération du panier local ou initialisation si inexistant
-            var inCart = JSON.parse(sessionStorage.getItem("inCart")) ?? {};
+            var inCart = []
+            inCart = JSON.parse(sessionStorage.getItem("inCart")) || [];
             //Ajout du meuble et de ses informations au panier local
             if (!inCart[item.name]) {
                 inCart = {
@@ -62,7 +63,7 @@ fetch('http://localhost:3000/api/furniture/' + id)
             //Ajout local storage - Sauvegarde des éléments ajouté au panier
             sessionStorage.setItem("inCart", JSON.stringify(inCart));
 
-            //Compteur du nombre de produits dans le panier
+        //Compteur du nombre de produits dans le panier
             var nbProduct = sessionStorage.getItem('compteurProduct');
             nbProduct++;
             sessionStorage.setItem("compteurProduct", nbProduct);

@@ -4,7 +4,9 @@ document.querySelector(".cart span").textContent = nbPrdt;
 
 //************* RECUPERATION ET AFFICAHEGE DES ELEMENTS DANS LA PAGE *************
 //Récupération des éléments mis dans le panier
-let itemsInCart = JSON.parse(sessionStorage.getItem("inCart"));
+let itemsInCart = [];
+itemsInCart = JSON.parse(sessionStorage.getItem("inCart"));
+console.log(itemsInCart)
 
 //Affichage si le panier est vide 
 if(itemsInCart === null || itemsInCart === []){
@@ -50,14 +52,14 @@ if(itemsInCart === null || itemsInCart === []){
         let totalCost = totalCostCalcul.reduce(reducer, 0);
 
     //Affichage du total des prix 
-        document.getElementById("totalCost").innerText = "Prix total du panier = " + totalCost + " €";
+        document.getElementById("totalCost").innerText = `Prix total de la commande = ${totalCost} €`;
         sessionStorage.setItem("Total Cost", JSON.stringify(totalCost))   
 
 //Vider le panier
-    document.getElementById('deleteCart').addEventListener('click', function(){
-        sessionStorage.clear()
-        window.location.reload()
-    })    
+        document.getElementById('deleteCart').addEventListener('click', function(){
+            sessionStorage.clear()
+            window.location.reload()
+        })    
  
 //************* FORMULAIRE DE COMMANDE *************
 
@@ -78,88 +80,107 @@ if(itemsInCart === null || itemsInCart === []){
                     pattern="[A-Za-z]+" title="caractères alphabétiques uniquement">
                 </div>
                 <div class="form-group">
-                    <label for="mail">Adresse e-mail *</label>
-                    <input type="email" required class="form-control" id="mail" name="mail" placeholder="name@mail.com">
+                    <label for="email">Adresse e-mail *</label>
+                    <input type="email" required class="form-control" id="email" name="email" placeholder="name@mail.com">
                 </div>
                 <div class="form-group">
-                    <label for="adress">Adresse postale *</label>
+                    <label for="address">Adresse postale *</label>
                     <input type="text" required class="form-control" id="address" name="address" placeholder="rue, boulevard, avenue..."
-                    title="caractères alphabétiques et numérique uniquement">
-                </div>
-                <div class="form-group">
-                    <label for="addressComplement">Complément d'adresse</label>
-                    <input type="text" class="form-control" id="addressComplement" name="addressComplement" placeholder="Bâtiment, étage, appartement..."
-                    title="caractères alphabétiques et numérique uniquement">
+                    title="caractères alphabétiques et numériques uniquement">
                 </div>
                 <div class="form-group">
                     <label for="postalCode">Code postal *</label>
                     <input type="text" required class="form-control" id="postalCode" name="postalCode" placeholder="Entrez votre code postal"
-                    pattern="[0-9]+" title="caractères numérique uniquement">
+                    pattern="[0-9]+" title="caractères numériques uniquement">
                 </div>
                 <div class="form-group">
                     <label for="city">Ville *</label>
                     <input type="text" required class="form-control" id="city" name="city" placeholder="Indiquez votre ville"
                     pattern="[A-Za-z]+" title="caractères alphabétiques uniquement">
                 </div>
-                <div class="form-group">
-                    <label for="country">Pays</label>
-                    <input type="text" class="form-control" id="country" name="country" placeholder="Si autre que la France"
-                    pattern="[A-Za-z]+" title="caractères alphabétiques uniquement">
-                </div>
                 <button type="submit" class="btn btn-dark mt-3 mb-3">Valider mes informations et payer</button>
             </form>
-            `           
-    
-    //Récupération des données entrées par l'utilisateur, transformation en objet JSON et stockage dans le sessionStorage
-        document.getElementById('formulaire').addEventListener('submit', (event)=> {
-            event.preventDefault()
-            const formData = new FormData(event.target); 
-            const formProps = Object.fromEntries(formData);
-            sessionStorage.setItem('clientInfos', JSON.stringify(formProps));
-            sendOrder()
-        });
+            `               
+   //Récupération des données entrées par l'utilisateur, transformation en objet JSON et stockage dans le sessionStorage
+            document.getElementById('formulaire').addEventListener('submit', (event)=> {
+                event.preventDefault()
+                sendOrder()
+            });
         
-    })  
-    
  //*************ENVOI DU FORMULAIRE *************
 
-        function sendOrder(){
-            if(formulaire.reportValidity() === true && itemsInCart.length > 0){
-    //Mettre les values dans un objet
-                const idContact = JSON.parse(sessionStorage.getItem('clientInfos'))
-                
-                itemsOrder = [itemsInCart]
+            function sendOrder(){
+                let itemsInCart = []
+                itemsInCart = JSON.parse(sessionStorage.getItem("inCart"));
+                console.log(itemsInCart)       
+                if(formulaire.reportValidity() === true){
+            //Mettre les valeurs dans un objet
+                    contact = {
+                        firstName : document.getElementById("firstName").value,
+                        lastName : document.getElementById("lastName").value,
+                        email : document.getElementById("email").value,
+                        address : document.getElementById("address").value,
+                        postalCode : document.getElementById("postalCode").value,
+                        city : document.getElementById("city").value,
+                    }
 
-                const clientOrder = {
-                    idContact,
-                    itemsOrder,
-                }
+                    const clientOrder = {
+                        contact,
+                        products : [itemsInCart]
+                    }
+                    
+                    console.log('clientOrder')
+                    console.log(clientOrder)
 
-               sessionStorage.setItem("clientOrder", JSON.stringify(clientOrder)) 
-  
-    // Requête API POST
-            fetch("http://localhost:3000/api/furniture/order", {
-                method:'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': "application/json"
-                },
-    //Objet JSON contenant les informations du client et de sa commande
-                body: JSON.stringify(clientOrder),
-            })
-                .then(function(response){ 
-                return response.json()
-                })
-                .then(function (r){ 
-                    sessionStorage.setItem("orderForm", JSON.stringify(r.clientOrder));
-                    window.location.assign("confirmation.html?clientOrderId=" + r.orderId);
-                })
-                .catch(function (err){
+                    const dataToSend = JSON.stringify(clientOrder)
+                    sessionStorage.setItem('dataToSend', dataToSend)
+                    sessionStorage.setItem('contact', JSON.stringify(contact))
+                    console.log('datatoSend')
+                    console.log(dataToSend)
+                 
+            // Requête API POST
+                    fetch('http://localhost:3000/api/furniture/order', {
+                        method:'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+            //Objet JSON contenant les informations du client et de sa commande               
+                        body: dataToSend,
+                    })
+                    .then(response => { 
+                            return response.json()
+                    })
+                //    .then((data) => {
+                //      localStorage.setItem("commande", JSON.stringify(data));
+                //      localStorage.setItem("id commande", JSON.stringify(data.orderId));
+                //    })
+                    .then(response =>{ 
+                        sessionStorage.getItem(JSON.stringify(contact));
+                        window.location.assign("confirmation.html?orderId=" + response.orderId);
+                    })
+                //.then(response => {
+                //    let getOrderId = response.orderId;
+                //    let getTotalPrice = document.getElementById('totalCost').textContent;
+                //    let validOrder = {
+                //        getOrderId,
+                //        getTotalPrice,
+                //    };
+                //    sessionStorage.setItem("confirmOrder", JSON.stringify(validOrder));
+                //    setTimeout(function () {
+                //        window.location = 'confirmation.html';
+                //    }, 1500);
+                //    console.log(validOrder);
+                //    })
+                    .catch(err =>{
                     alert('Une erreur s\'est produite, votre commande n\'a pas pu être validée. Veuillez réessayer ultérieurement')
-                    console.log("fetch Error");
-                });
-            }
-        }
-//Fermeture du Else
-    }
-}
+                        console.log(err);
+                    })
+          
+                } // Fin du if
+              
+            } //Fin fonction sendOrder
+       
+        }) //Fermeture fonction formulaire 
+
+    } //Fermeture du Else
+} 
