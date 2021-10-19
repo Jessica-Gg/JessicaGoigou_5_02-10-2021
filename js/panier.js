@@ -32,18 +32,26 @@ if(itemsInCart === null || itemsInCart === []){
                             <p class="card-text bold" id="price">Prix : ${item.priceTxt}</p>
                             <p class="card-text" id="quantityValue">Quantité : ${item.quantity}</p> 
                             <p class="card-text bold" id="totalElement"> Total : ${item.quantity*item.price} €</p>
-                        
                         </div>
                     </div>
                 </div>
             </div>` 
-        }    
+
+            var addIdCart = []
+            for (j in itemsInCart){
+                addIdCart.push(itemsInCart[j].id)
+            }
+        }
+      
+
+        console.log('addIdCart')
+        console.log(addIdCart)
 //************* TOTAL*************
 //Total du panier
     //Déclaration de la variable et enregistrement des prix dans un tableau
         let totalCostCalcul = [];
-        for (j in itemsInCart){
-            let costProducts = itemsInCart[j].price*itemsInCart[j].quantity;
+        for (i in itemsInCart){
+            let costProducts = itemsInCart[i].price*itemsInCart[i].quantity;
             totalCostCalcul.push(costProducts);
         }
 
@@ -108,7 +116,6 @@ if(itemsInCart === null || itemsInCart === []){
             });
         
  //*************ENVOI DU FORMULAIRE *************
-
             function sendOrder(){
                 let itemsInCart = []
                 itemsInCart = JSON.parse(sessionStorage.getItem("inCart"));
@@ -124,19 +131,18 @@ if(itemsInCart === null || itemsInCart === []){
                         city : document.getElementById("city").value,
                     }
 
+                    const products = [addIdCart];
+
                     const clientOrder = {
                         contact,
-                        products : [itemsInCart]
+                        products, 
                     }
-                    
+
                     console.log('clientOrder')
                     console.log(clientOrder)
-
                     const dataToSend = JSON.stringify(clientOrder)
                     sessionStorage.setItem('dataToSend', dataToSend)
                     sessionStorage.setItem('contact', JSON.stringify(contact))
-                    console.log('datatoSend')
-                    console.log(dataToSend)
                  
             // Requête API POST
                     fetch('http://localhost:3000/api/furniture/order', {
@@ -147,30 +153,11 @@ if(itemsInCart === null || itemsInCart === []){
             //Objet JSON contenant les informations du client et de sa commande               
                         body: dataToSend,
                     })
-                    .then(response => { 
-                            return response.json()
-                    })
-                //    .then((data) => {
-                //      localStorage.setItem("commande", JSON.stringify(data));
-                //      localStorage.setItem("id commande", JSON.stringify(data.orderId));
-                //    })
+                    .then((response) => response.json)
                     .then(response =>{ 
                         sessionStorage.getItem(JSON.stringify(contact));
                         window.location.assign("confirmation.html?orderId=" + response.orderId);
                     })
-                //.then(response => {
-                //    let getOrderId = response.orderId;
-                //    let getTotalPrice = document.getElementById('totalCost').textContent;
-                //    let validOrder = {
-                //        getOrderId,
-                //        getTotalPrice,
-                //    };
-                //    sessionStorage.setItem("confirmOrder", JSON.stringify(validOrder));
-                //    setTimeout(function () {
-                //        window.location = 'confirmation.html';
-                //    }, 1500);
-                //    console.log(validOrder);
-                //    })
                     .catch(err =>{
                     alert('Une erreur s\'est produite, votre commande n\'a pas pu être validée. Veuillez réessayer ultérieurement')
                         console.log(err);
@@ -178,8 +165,8 @@ if(itemsInCart === null || itemsInCart === []){
           
                 } // Fin du if
               
-            } //Fin fonction sendOrder
-       
+            } //Fin fonction sendOrder              
+
         }) //Fermeture fonction formulaire 
 
     } //Fermeture du Else
