@@ -37,15 +37,15 @@ if(itemsInCart === null || itemsInCart === []){
                 </div>
             </div>` 
 
-            var addIdCart = []
-            for (j in itemsInCart){
-                addIdCart.push(itemsInCart[j].id)
+            var product_id = []
+            for (i in itemsInCart){
+                product_id.push(itemsInCart[i].id)
             }
         }
       
 
-        console.log('addIdCart')
-        console.log(addIdCart)
+        console.log('product_id')
+        console.log(product_id)
 //************* TOTAL*************
 //Total du panier
     //Déclaration de la variable et enregistrement des prix dans un tableau
@@ -119,30 +119,24 @@ if(itemsInCart === null || itemsInCart === []){
             function sendOrder(){
                 let itemsInCart = []
                 itemsInCart = JSON.parse(sessionStorage.getItem("inCart"));
-                console.log(itemsInCart)       
                 if(formulaire.reportValidity() === true){
-            //Mettre les valeurs dans un objet
-                    contact = {
-                        firstName : document.getElementById("firstName").value,
-                        lastName : document.getElementById("lastName").value,
-                        email : document.getElementById("email").value,
-                        address : document.getElementById("address").value,
-                        postalCode : document.getElementById("postalCode").value,
-                        city : document.getElementById("city").value,
-                    }
-
-                    const products = [addIdCart];
-
+            //Mettre les valeurs dans un objet                
                     const clientOrder = {
-                        contact,
-                        products, 
+
+                        contact : {
+                            firstName : document.getElementById("firstName").value,
+                            lastName : document.getElementById("lastName").value,
+                            address : document.getElementById("address").value,
+                            city : document.getElementById("city").value,
+                            email : document.getElementById("email").value,
+                        },
+    
+                        products : product_id,
                     }
 
-                    console.log('clientOrder')
-                    console.log(clientOrder)
                     const dataToSend = JSON.stringify(clientOrder)
                     sessionStorage.setItem('dataToSend', dataToSend)
-                    sessionStorage.setItem('contact', JSON.stringify(contact))
+                    console.log(dataToSend)
                  
             // Requête API POST
                     fetch('http://localhost:3000/api/furniture/order', {
@@ -153,9 +147,11 @@ if(itemsInCart === null || itemsInCart === []){
             //Objet JSON contenant les informations du client et de sa commande               
                         body: dataToSend,
                     })
-                    .then((response) => response.json)
+                    .then((response) => {
+                        return response.json();
+                    })
                     .then(response =>{ 
-                        sessionStorage.getItem(JSON.stringify(contact));
+                        console.log(response)
                         window.location.assign("confirmation.html?orderId=" + response.orderId);
                     })
                     .catch(err =>{
@@ -165,6 +161,7 @@ if(itemsInCart === null || itemsInCart === []){
           
                 } // Fin du if
               
+                
             } //Fin fonction sendOrder              
 
         }) //Fermeture fonction formulaire 
