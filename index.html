@@ -1,37 +1,34 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="fr">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Onorico : trouver le meuble en chêne qui vous convient avec un large choix de vernis.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="robot" content="index, follow">
+    <head>
+        <meta charset="utf-8">
+        <title>Orinoco</title>
+        <meta name="description" content="Orinoco : trouver le meuble en bois qui vous convient avec un large choix de vernis.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <meta name="robot" content="index, follow">
 
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/19555fa88c.js" crossorigin="anonymous"></script>
-   
-    <title>Orinoco</title>
+    <!-- Styles -->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/19555fa88c.js" crossorigin="anonymous"></script>
 
     <!-- Balises réseaux sociaux -->
     <!-- Balises Facebook -->
-		<meta property="og:title" content="Onorico"/>
+		<meta property="og:title" content="Orinoco"/>
 		<meta property="og:type" content="website"/>
-		<meta property="og:url" content="http://onorico.com"/>
-		<meta property="og:description" content="Vente en ligne de meubles en chêne"/>
+		<meta property="og:url" content="http://Orinoco.com"/>
+		<meta property="og:description" content="Vente en ligne de meubles en bois"/>
 		<meta property="og:image" content=""/>
 
 	<!-- Balises Twitter -->
 		<meta name="twitter:card" content="summary_large_image"/>
-		<meta name="twitter:title" content="Onorico"/>
-		<meta name="twitter:site" content="@onorico"/>
-		<meta name="twitter:creator" content="@onorico"/>
-		<meta name="twitter:description" content="Vente en ligne de meubles en chêne"/> 
+		<meta name="twitter:title" content="Orinoco"/>
+		<meta name="twitter:site" content="@Orinoco"/>
+		<meta name="twitter:creator" content="@Orinoco"/>
+		<meta name="twitter:description" content="Vente en ligne de meubles en bois"/> 
 		<meta name="twitter:image" content=""/>
 
-  </head>
+    </head>
 <!--BODY-->
 
 <!--BARRE NAVIGATION-->
@@ -55,7 +52,7 @@
                         <a class="nav-link text-dark"  href="mailto:orinoco@gmail.com">Contact</a>
                     </li>
                     <li class="nav-item cart">
-                        <a class="nav-link text-dark" href="./panier.html">Mon panier <i class="fas fa-shopping-basket"></i> <span></span></a>
+                        <a class="nav-link text-dark" href="./pages_html/panier.html">Mon panier <i class="fas fa-shopping-basket"></i> <span></span></a>
                     </li>
                 </ul>                                  
             </div>
@@ -68,7 +65,8 @@
         <div class="container my-3">
             <div class="row mb-3">
                 <div class="col">
-                    <input class="form-control" id="searchInput" type="text" placeholder="Rechercher..">
+                    <label for="searchInput">Rechercher <i class="fas fa-search"></i></label>
+                        <input class="form-control" id="searchInput" type="text" placeholder="...">
                 </div>
             </div>
     <!--Hero Section-->
@@ -93,6 +91,7 @@
     <!--Zone des articles-->            
             <div id="containerFurnitures" class="row justify-content-center ">
                 <h1 class="text-center mt-5 border-top border-bottom text-uppercase bg-white" id="produits"><i class="fas fa-chair"></i> Tout nos produits <i class="fas fa-chair"></i></h1>                
+                <!--Insertions de chaque produits dans sa fiche-->            
             </div>
         </div>
     </section>
@@ -118,8 +117,6 @@
             </ul>
         </div>
     </footer>
-
-
 
     <!-- JavaScript -->
     <script src="./js/items.js"></script>

@@ -28,8 +28,8 @@ if(itemsInCart === null || itemsInCart === []){
                     </div>  
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">${item.name}</h5></br>
-                            <p class="card-text bold" id="price">Prix : ${item.priceTxt}</p>
+                            <h2 class="card-title">${item.name}</h2></br>
+                            <p class="card-text" id="price">Prix : ${item.priceTxt}</p>
                             <p class="card-text" id="quantityValue">Quantité : ${item.quantity}</p> 
                             <p class="card-text bold" id="totalElement"> Total : ${item.quantity*item.price} €</p>
                         </div>
@@ -43,9 +43,6 @@ if(itemsInCart === null || itemsInCart === []){
             }
         }
       
-
-        console.log('product_id')
-        console.log(product_id)
 //************* TOTAL*************
 //Total du panier
     //Déclaration de la variable et enregistrement des prix dans un tableau
