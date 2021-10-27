@@ -1,4 +1,4 @@
-{//Affichage du nombre de produits dans le panier
+//Affichage du nombre de produits dans le panier
 var nbPrdt = sessionStorage.getItem("compteurProduct");
 document.querySelector(".cart span").textContent = nbPrdt;
 
@@ -24,7 +24,7 @@ if(itemsInCart === null || itemsInCart === []){
             `<div id="cardItems" class="card shadow mb-3">
                 <div class="row"> 
                     <div class="col-md-4">  
-                        <img class="card-img" src="${item.imageUrl}" alt=""/>
+                        <img class="card-img" src="${item.imageUrl}" alt="image of a ${item.name}"/>
                     </div>  
                     <div class="col-md-8">
                         <div class="card-body">
@@ -36,7 +36,7 @@ if(itemsInCart === null || itemsInCart === []){
                     </div>
                 </div>
             </div>` 
-
+    //Récupération des id de chaque élément mis dans le panier pour envoi à l'API plus tard
             var product_id = []
             for (i in itemsInCart){
                 product_id.push(itemsInCart[i].id)
@@ -164,4 +164,3 @@ if(itemsInCart === null || itemsInCart === []){
         }) //Fermeture fonction formulaire 
 
     } //Fermeture du Else
-} 

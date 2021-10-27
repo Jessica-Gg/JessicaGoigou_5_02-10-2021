@@ -19,7 +19,7 @@ fetch('http://localhost:3000/api/furniture/' + id)
             `<div class="card shadow mb-3">
             <div class="row no-gutters">
                 <div class="col-md-6">  
-                    <img class="card-img" src="${item.imageUrl}" alt=""/>
+                    <img class="card-img" src="${item.imageUrl}" alt="image of a ${item.name}"/>
                 </div>  
                 <div class="col-md-6">
                     <div class="card-body">
