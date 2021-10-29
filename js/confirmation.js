@@ -2,7 +2,7 @@
 let paramsId = (new URL(document.location)).searchParams;
 let orderId = paramsId.get("orderId");
  
- //Afficahge des données sur la page de confirmation de commande
+ //Affichage des données sur la page de confirmation de commande
 document.getElementById('totalCommande').textContent += 
     'Le montant total de votre commande est de : ' + sessionStorage.getItem('Total Cost') + '€';
 document.getElementById('identifiantClient').textContent +=

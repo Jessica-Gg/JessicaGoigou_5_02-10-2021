@@ -7,7 +7,7 @@
         <meta name="robot" content="index, follow">
 
     <!-- Styles -->
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/19555fa88c.js" crossorigin="anonymous"></script>
 
@@ -32,88 +32,83 @@
 <!--BODY-->
 
 <!--BARRE NAVIGATION-->
-<body>
-    <header class="border-bottom shadow-sm">
-        <nav class="navbar navbar-expand-md navbar-light">
-            <a class="navbar-brand" href="index.html">Orinoco <i class="fas fa-chair"></i></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <body>
+        <header class="border-bottom shadow-sm">
+            <nav class="navbar navbar-expand-md navbar-light">
+                <a class="navbar-brand" href="index.html">Orinoco <i class="fas fa-chair"></i></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                     
-            <div id="navbarContent" class="collapse navbar-collapse">     
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link text-dark" href="../index.html">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="../index.html">Produits</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark"  href="mailto:orinoco@gmail.com">Contact</a>
-                    </li>
-                    <li class="nav-item cart">
-                        <a class="nav-link text-dark" href="panier.html">Mon panier <i class="fas fa-shopping-basket"></i> <span></span></a>
-                    </li>
-                </ul>                                  
-            </div>
-        </nav>            
-    </header>
+                <div id="navbarContent" class="collapse navbar-collapse">     
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link text-dark" href="../index.html">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="../index.html">Produits</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark"  href="mailto:orinoco@gmail.com">Contact</a>
+                        </li>
+                        <li class="nav-item cart">
+                            <a class="nav-link text-dark" href="panier.html">Mon panier <i class="fas fa-shopping-basket"></i> <span></span></a>
+                        </li>
+                    </ul>                                  
+                </div>
+            </nav>            
+        </header>
 
 <!--ARTICLES-->
-    <section class="container">
-        <div class="row my-5" id="containerCart">
-            <h1 class="text-center border-top border-bottom mb-5">Mon panier <i class="fas fa-shopping-basket"></i></h1>    
-            <!--Insertion des éléments du panier avec JavaScript-->
-        </div>
+        <section class="container">
+            <div class="row my-5" id="containerCart">
+                <h1 class="text-center border-top border-bottom mb-5">Mon panier <i class="fas fa-shopping-basket"></i></h1>    
+            <!--Insertion des éléments mis dans le panier-->
+            </div>
             <!--Boutons pour soit revenir à la page d'accueil, soit valider le panier et accéder au formulaire-->
-        <div class="text-center mb-3">
-            <h3 id="totalCost" class="border-top border-bottom totalCost bold"></h3>  
-            <a class="btn btn-dark mt-3 mx-5" href="../index.html"><i class="far fa-arrow-alt-circle-left"></i> Poursuivre mes achats</a>
-            <button id="deleteCart" class="btn btn-dark mt-3 mx-5">Vider mon panier <i class="far fa-trash-alt"></i></button>
-            <a id="btnForm" class="btn btn-dark mt-3 mx-5" href="#formulaire">Valider ma commande <i class="far fa-check-circle"></i></a>
-        </div>
+            <div class="text-center mb-3">
+                <h3 id="totalCost" class="border-top border-bottom totalCost bold"></h3>  
+                <a class="btn btn-dark mt-3 mx-5" href="../index.html"><i class="far fa-arrow-alt-circle-left"></i> Poursuivre mes achats</a>
+                <button id="deleteCart" class="btn btn-dark mt-3 mx-5">Vider mon panier <i class="far fa-trash-alt"></i></button>
+                <a id="btnForm" class="btn btn-dark mt-3 mx-5" href="#formulaire">Valider ma commande <i class="far fa-check-circle"></i></a>
+            </div>
         <!--Formulaire -->
-        <div id="containerFormulaire" class="text-center">
-            <!--Insertion du formulaire de commande si le bouton "valider la commande" est cliqué -->      
-        </div>
-    </section>
+            <div id="containerFormulaire" class="text-center">
+            <!--Insertion du formulaire de commande si le bouton "valider la commande" est cliqué et que le panier contient des éléments-->      
+            </div>
+        </section>
 
-
- 
 <!--FOOTER-->    
-    <footer class="bg-white border-top pt-3">
-        <div class="container">     
-            <ul class="list-inline text-center">
-                <li class="list-inline-item">
-                    <a class="text-dark text-uppercase" href="#">Aide</a>
-                </li>
-                <li class="list-inline-item text-dark">&middot;</li>
-                <li class="list-inline-item">
-                    <a class="text-dark text-uppercase" href="#">Conditions générales d'utilisation</a>
-                </li>
-                <li class="list-inline-item text-dark">&middot;</li>
-                <li class="list-inline-item">
-                    <a class="text-dark text-uppercase" href="#">Cookies</a>
-                </li>
-                <li class="list-inline-item text-dark">&middot;</li>
-                <li class="list-inline-item">
-                    <a class="text-dark text-uppercase" href="#">Accessibilité</a>
-                </li>
-            </ul>
-        </div>
-    </footer>
-
-
+        <footer class="bg-white border-top pt-3">
+            <div class="container">     
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item">
+                        <a class="text-dark text-uppercase" href="#">Aide</a>
+                    </li>
+                    <li class="list-inline-item text-dark">&middot;</li>
+                    <li class="list-inline-item">
+                        <a class="text-dark text-uppercase" href="#">Conditions générales d'utilisation</a>
+                    </li>
+                    <li class="list-inline-item text-dark">&middot;</li>
+                    <li class="list-inline-item">
+                        <a class="text-dark text-uppercase" href="#">Cookies</a>
+                    </li>
+                    <li class="list-inline-item text-dark">&middot;</li>
+                    <li class="list-inline-item">
+                        <a class="text-dark text-uppercase" href="#">Accessibilité</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
 
     <!-- JavaScript -->
-    <script src="../js/items.js"></script>
-    <script src='../js/panier.js'></script>
-    <!-- jQuery, Popper.js, Bootstrap JS -->
+        <script src="../js/items.js"></script>
+        <script src='../js/panier.js'></script>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- jQuery, Popper.js, Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
   </body>
-
 </html>

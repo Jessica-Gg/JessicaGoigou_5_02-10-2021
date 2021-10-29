@@ -10,11 +10,9 @@ document.querySelector(".cart span").textContent = nbPrdt;
 fetch('http://localhost:3000/api/furniture/' + id)
     .then(response => response.json())
     .then(function (furniture) {
-
         //Tranformation du retour API en objet de type Produit    
         let item = new Produit(furniture)
-
-        //Code pour l'affichage html de l'élément sur la page     
+        //Affichage de l'élément sélectionné sur la page     
         document.getElementById("containerFurniture").innerHTML +=
             `<div class="card shadow mb-3">
             <div class="row no-gutters">
@@ -59,7 +57,6 @@ fetch('http://localhost:3000/api/furniture/' + id)
                 }
             }
             inCart[item.name].quantity += 1;
-
             //Ajout local storage - Sauvegarde des éléments ajouté au panier
             sessionStorage.setItem("inCart", JSON.stringify(inCart));
 
@@ -73,8 +70,6 @@ fetch('http://localhost:3000/api/furniture/' + id)
 
     //En cas d'erreur, renvoie une alerte "Aucun produit n'a été trouvé"
     .catch(function (err) {
-        console.log("fetch Error")
+        console.log(err)
         alert("Aucun produit n'a été trouvé")
     });
-
-

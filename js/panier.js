@@ -2,11 +2,11 @@
 var nbPrdt = sessionStorage.getItem("compteurProduct");
 document.querySelector(".cart span").textContent = nbPrdt;
 
-//************* RECUPERATION ET AFFICAHEGE DES ELEMENTS DANS LA PAGE *************
+//************* RECUPERATION ET AFFICHAGE DES ELEMENTS DANS LA PAGE *************
+
 //Récupération des éléments mis dans le panier
 let itemsInCart = [];
 itemsInCart = JSON.parse(sessionStorage.getItem("inCart"));
-console.log(itemsInCart)
 
 //Affichage si le panier est vide 
 if(itemsInCart === null || itemsInCart === []){
@@ -16,7 +16,7 @@ if(itemsInCart === null || itemsInCart === []){
         </div>
         `
 }
-//Affichage des élements du panier
+//Affichage des élements mis dans le panier
     else {
         for(let i in itemsInCart){
             let item = itemsInCart[i]
@@ -36,7 +36,7 @@ if(itemsInCart === null || itemsInCart === []){
                     </div>
                 </div>
             </div>` 
-    //Récupération des id de chaque élément mis dans le panier pour envoi à l'API plus tard
+    //Récupération dans un tableau des id de chaque élément mis dans le panier pour envoi à l'API plus tard
             var product_id = []
             for (i in itemsInCart){
                 product_id.push(itemsInCart[i].id)
@@ -44,6 +44,7 @@ if(itemsInCart === null || itemsInCart === []){
         }
       
 //************* TOTAL*************
+
 //Total du panier
     //Déclaration de la variable et enregistrement des prix dans un tableau
         let totalCostCalcul = [];
@@ -56,11 +57,11 @@ if(itemsInCart === null || itemsInCart === []){
         let reducer = (accumulator, currentValue) => accumulator + currentValue
         let totalCost = totalCostCalcul.reduce(reducer, 0);
 
-    //Affichage du total des prix 
+    //Affichage et stockage du total des prix 
         document.getElementById("totalCost").innerText = `Prix total de la commande = ${totalCost} €`;
         sessionStorage.setItem("Total Cost", JSON.stringify(totalCost))   
 
-//Vider le panier
+//Vider le panier et le sessionStorage
         document.getElementById('deleteCart').addEventListener('click', function(){
             sessionStorage.clear()
             window.location.reload()
@@ -68,7 +69,7 @@ if(itemsInCart === null || itemsInCart === []){
  
 //************* FORMULAIRE DE COMMANDE *************
 
-    //Affichage du formulaire de commande
+//Affichage du formulaire de commande au clic sur le bouton "Valider ma commande"
         document.getElementById("btnForm").addEventListener("click", function(){
             document.getElementById("containerFormulaire").innerHTML += `     
             <h2 class="border-top border-bottom bold mt-5">Formulaire de commande</h2>
@@ -106,20 +107,17 @@ if(itemsInCart === null || itemsInCart === []){
                 <button type="submit" class="btn btn-dark mt-3 mb-3">Valider mes informations et payer</button>
             </form>
             `               
-   //Récupération des données entrées par l'utilisateur, transformation en objet JSON et stockage dans le sessionStorage
+//Ecoute au clic sur le bouton submit "valider mes informations et payer" et envoi des données
             document.getElementById('formulaire').addEventListener('submit', (event)=> {
                 event.preventDefault()
                 sendOrder()
             });
         
- //*************ENVOI DU FORMULAIRE *************
-            function sendOrder(){
-                let itemsInCart = []
-                itemsInCart = JSON.parse(sessionStorage.getItem("inCart"));
+//*************ENVOI DU FORMULAIRE *************
+            function sendOrder(){   
                 if(formulaire.reportValidity() === true){
-            //Mettre les valeurs dans un objet                
+        //Si le formulaire est correctement rempli, alors mettre les valeurs requises dans un objet                
                     const clientOrder = {
-
                         contact : {
                             firstName : document.getElementById("firstName").value,
                             lastName : document.getElementById("lastName").value,
@@ -127,15 +125,13 @@ if(itemsInCart === null || itemsInCart === []){
                             city : document.getElementById("city").value,
                             email : document.getElementById("email").value,
                         },
-    
                         products : product_id,
                     }
 
                     const dataToSend = JSON.stringify(clientOrder)
                     sessionStorage.setItem('dataToSend', dataToSend)
-                    console.log(dataToSend)
                  
-            // Requête API POST
+        // Requête API POST
                     fetch('http://localhost:3000/api/furniture/order', {
                         method:'POST',
                         headers: {
@@ -147,8 +143,8 @@ if(itemsInCart === null || itemsInCart === []){
                     .then((response) => {
                         return response.json();
                     })
+            //Redirection automatique vers la page de confirmation de commande avec l'url contenant l'id de la commande
                     .then(response =>{ 
-                        console.log(response)
                         window.location.assign("confirmation.html?orderId=" + response.orderId);
                     })
                     .catch(err =>{
@@ -156,10 +152,9 @@ if(itemsInCart === null || itemsInCart === []){
                         console.log(err);
                     })
           
-                } // Fin du if
-              
-                
-            } //Fin fonction sendOrder              
+                } // Fermeture du if dans la fonction sendOrder
+   
+            } //Fermeture de la fonction sendOrder              
 
         }) //Fermeture fonction formulaire 
 

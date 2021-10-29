@@ -2,12 +2,12 @@
 let nbPrdt = sessionStorage.getItem("compteurProduct");
 document.querySelector(".cart span").textContent = nbPrdt;
 
-// Requête API
+// Requête API pour récupérer les informations des produits
 fetch("http://localhost:3000/api/furniture")
     .then(response => response.json())
     .then(function (listFurniture) {
 
-//Boucle for pour générer un nouvel élément tant qu'il en reste à afficher
+//Boucle for pour générer un nouvel élément sur la page tant qu'il en reste à afficher
         for (let furniture of listFurniture) {  
             let item= new Produit(furniture)         
             document.getElementById("containerFurnitures").innerHTML +=
@@ -26,7 +26,11 @@ fetch("http://localhost:3000/api/furniture")
                         <p class="card-text">Description : ${item.description}</p>
                     </div>
                     <div class="card-footer">
-                        <div class="text-center"><a id="seeProduct" class="btn" href="./pages_html/produit.html?id=${item.id}" aria-label="Lien vers la fiche produit détaillée">Voir la fiche complète</a></div>
+                        <div class="text-center">
+                            <a id="seeProduct" class="btn" href="./pages_html/produit.html?id=${item.id}" aria-label="Lien vers la fiche produit détaillée">
+                                Voir la fiche complète
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>` 
@@ -35,7 +39,7 @@ fetch("http://localhost:3000/api/furniture")
 
 //En cas d'erreur au chargement, renvoie une alerte "Aucun produit n'a été trouvé"
     .catch(function (err) {
-        console.log("fetch Error")
+        console.log(err)
         alert("Aucun produit n'a été trouvé !")
     });
 
