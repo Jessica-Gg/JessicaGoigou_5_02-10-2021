@@ -22,7 +22,7 @@ fetch("http://localhost:3000/api/furniture")
                         <img src="${item.imageUrl}" class="card-img-top"  alt="image d'un meuble en bois : ${item.name}">
                     </a>
                     <div class="card-body">
-                        <p class="card-text bold">prix : ${item.priceTxt}</p>
+                        <p class="card-text bold">Prix : ${item.priceTxt}</p>
                         <p class="card-text">Description : ${item.description}</p>
                     </div>
                     <div class="card-footer">

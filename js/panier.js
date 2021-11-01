@@ -29,7 +29,7 @@ if(itemsInCart === null || itemsInCart === []){
                     <div class="col-md-8">
                         <div class="card-body">
                             <h2 class="card-title">${item.name}</h2></br>
-                            <p class="card-text" id="price">Prix : ${item.priceTxt}</p>
+                            <p class="card-text" id="price">Prix unitaire : ${item.priceTxt}</p>
                             <p class="card-text" id="quantityValue">Quantité : ${item.quantity}</p> 
                             <p class="card-text bold" id="totalElement"> Total : ${item.quantity*item.price} €</p>
                         </div>
